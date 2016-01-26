@@ -66,6 +66,8 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -147,6 +149,57 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\db_intranet.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_intranet.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\db_intranet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\db_intranet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db_intranet.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_com_historial.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_directorios.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_empresas.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_eventos.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_eve_comentarios.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_eve_detalle.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_responsables.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_solicitudes.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_sucursales.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_tipo_solicitud.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_usuarios.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\int_usu_categorias.cs">
+      <DependentUpon>db_intranet.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +251,23 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <EntityDeploy Include="Models\db_intranet.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>db_intranet.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\db_intranet.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>db_intranet.edmx</DependentUpon>
+      <LastGenOutput>db_intranet.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\db_intranet.edmx.diagram">
+      <DependentUpon>db_intranet.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\db_intranet.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>db_intranet.edmx</DependentUpon>
+      <LastGenOutput>db_intranet.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -232,10 +302,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
