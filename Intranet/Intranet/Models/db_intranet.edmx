@@ -1,0 +1,917 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_intranet_vydModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="int_com_historial">
+          <Key>
+            <PropertyRef Name="com_his_id" />
+          </Key>
+          <Property Name="com_his_id" Type="int" Nullable="false" />
+          <Property Name="com_his_eve_com_id" Type="int" />
+          <Property Name="com_his_eve_com_cuerpo" Type="text" />
+          <Property Name="com_his_eve_com_feccre" Type="datetime" />
+        </EntityType>
+        <EntityType Name="int_directorios">
+          <Key>
+            <PropertyRef Name="dir_id" />
+          </Key>
+          <Property Name="dir_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dir_anexo" Type="int" />
+          <Property Name="dir_movil" Type="int" />
+          <Property Name="dir_usu_id" Type="int" />
+          <Property Name="dir_suc_id" Type="int" />
+          <Property Name="dir_feccre" Type="datetime" />
+          <Property Name="dir_usucre" Type="int" />
+        </EntityType>
+        <EntityType Name="int_empresas">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="emp_rut" Type="nvarchar" MaxLength="50" />
+          <Property Name="emp_feccre" Type="datetime" />
+          <Property Name="emp_usucre" Type="int" />
+        </EntityType>
+        <EntityType Name="int_eve_comentarios">
+          <Key>
+            <PropertyRef Name="eve_com_id" />
+          </Key>
+          <Property Name="eve_com_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eve_com_cuerpo" Type="text" />
+          <Property Name="eve_com_usu_id" Type="int" />
+          <Property Name="eve_com_eve_id" Type="int" />
+          <Property Name="eve_com_feccre" Type="datetime" />
+          <Property Name="eve_com_fecmod" Type="datetime" />
+        </EntityType>
+        <EntityType Name="int_eve_detalle">
+          <Key>
+            <PropertyRef Name="eve_det_id" />
+          </Key>
+          <Property Name="eve_det_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eve_det_eve_id" Type="int" />
+          <Property Name="eve_det_imagen" Type="text" />
+          <Property Name="eve_det_feccre" Type="datetime" />
+          <Property Name="eve_det_fecmod" Type="datetime" />
+          <Property Name="eve_det_usucre" Type="int" />
+        </EntityType>
+        <EntityType Name="int_eventos">
+          <Key>
+            <PropertyRef Name="eve_id" />
+          </Key>
+          <Property Name="eve_id" Type="int" Nullable="false" />
+          <Property Name="eve_nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="eve_motivo" Type="text" />
+          <Property Name="eve_feccre" Type="datetime" />
+          <Property Name="eve_fecmod" Type="datetime" />
+          <Property Name="eve_usucre" Type="int" />
+          <Property Name="eve_fec_realizacion" Type="datetime" />
+          <Property Name="eve_usu_id" Type="int" />
+        </EntityType>
+        <EntityType Name="int_responsables">
+          <Key>
+            <PropertyRef Name="res_id" />
+          </Key>
+          <Property Name="res_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="res_nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="res_apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="res_correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="res_anexo" Type="int" />
+          <Property Name="res_tip_sol_id" Type="int" />
+        </EntityType>
+        <EntityType Name="int_solicitudes">
+          <Key>
+            <PropertyRef Name="sol_id" />
+          </Key>
+          <Property Name="sol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sol_titulo" Type="nvarchar" MaxLength="50" />
+          <Property Name="sol_cuerpo" Type="nvarchar" MaxLength="50" />
+          <Property Name="sol_feccre" Type="datetime" />
+          <Property Name="sol_res_id" Type="int" />
+          <Property Name="sol_tip_sol_id" Type="int" />
+          <Property Name="sol_usu_id" Type="int" />
+        </EntityType>
+        <EntityType Name="int_sucursales">
+          <Key>
+            <PropertyRef Name="suc_id" />
+          </Key>
+          <Property Name="suc_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="suc_nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="suc_direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="suc_telefono" Type="int" />
+          <Property Name="suc_feccre" Type="datetime" />
+          <Property Name="suc_usucre" Type="int" />
+          <Property Name="suc_emp_id" Type="int" />
+        </EntityType>
+        <EntityType Name="int_tipo_solicitud">
+          <Key>
+            <PropertyRef Name="tip_sol_id" />
+          </Key>
+          <Property Name="tip_sol_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tip_sol_nombre" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="int_usu_categorias">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_nombre" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="int_usuarios">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usu_nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="usu_apellido" Type="nvarchar" MaxLength="50" />
+          <Property Name="usu_rut" Type="nvarchar" MaxLength="13" />
+          <Property Name="usu_sexo" Type="char" MaxLength="1" />
+          <Property Name="usu_correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="usu_password" Type="nvarchar" MaxLength="50" />
+          <Property Name="usu_imagen" Type="text" />
+          <Property Name="usu_cumpleaños" Type="date" />
+          <Property Name="usu_cat_id" Type="int" />
+          <Property Name="usu_feccre" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_int_com_historial_int_eve_comentarios">
+          <End Role="int_eve_comentarios" Type="Self.int_eve_comentarios" Multiplicity="0..1" />
+          <End Role="int_com_historial" Type="Self.int_com_historial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_eve_comentarios">
+              <PropertyRef Name="eve_com_id" />
+            </Principal>
+            <Dependent Role="int_com_historial">
+              <PropertyRef Name="com_his_eve_com_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_directorios_int_sucursales">
+          <End Role="int_sucursales" Type="Self.int_sucursales" Multiplicity="0..1" />
+          <End Role="int_directorios" Type="Self.int_directorios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_sucursales">
+              <PropertyRef Name="suc_id" />
+            </Principal>
+            <Dependent Role="int_directorios">
+              <PropertyRef Name="dir_suc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_directorios_int_usuarios">
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="0..1" />
+          <End Role="int_directorios" Type="Self.int_directorios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="int_directorios">
+              <PropertyRef Name="dir_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_eve_comentarios_int_eventos">
+          <End Role="int_eventos" Type="Self.int_eventos" Multiplicity="0..1" />
+          <End Role="int_eve_comentarios" Type="Self.int_eve_comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_eventos">
+              <PropertyRef Name="eve_id" />
+            </Principal>
+            <Dependent Role="int_eve_comentarios">
+              <PropertyRef Name="eve_com_eve_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_eve_comentarios_int_usuarios">
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="0..1" />
+          <End Role="int_eve_comentarios" Type="Self.int_eve_comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="int_eve_comentarios">
+              <PropertyRef Name="eve_com_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_eve_detalle_int_eventos">
+          <End Role="int_eventos" Type="Self.int_eventos" Multiplicity="0..1" />
+          <End Role="int_eve_detalle" Type="Self.int_eve_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_eventos">
+              <PropertyRef Name="eve_id" />
+            </Principal>
+            <Dependent Role="int_eve_detalle">
+              <PropertyRef Name="eve_det_eve_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_eventos_int_usuarios">
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="0..1" />
+          <End Role="int_eventos" Type="Self.int_eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="int_eventos">
+              <PropertyRef Name="eve_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_responsables_int_tipo_solicitud">
+          <End Role="int_tipo_solicitud" Type="Self.int_tipo_solicitud" Multiplicity="0..1" />
+          <End Role="int_responsables" Type="Self.int_responsables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_tipo_solicitud">
+              <PropertyRef Name="tip_sol_id" />
+            </Principal>
+            <Dependent Role="int_responsables">
+              <PropertyRef Name="res_tip_sol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_solicitudes_int_responsables">
+          <End Role="int_responsables" Type="Self.int_responsables" Multiplicity="0..1" />
+          <End Role="int_solicitudes" Type="Self.int_solicitudes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_responsables">
+              <PropertyRef Name="res_id" />
+            </Principal>
+            <Dependent Role="int_solicitudes">
+              <PropertyRef Name="sol_res_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_solicitudes_int_tipo_solicitud">
+          <End Role="int_tipo_solicitud" Type="Self.int_tipo_solicitud" Multiplicity="0..1" />
+          <End Role="int_solicitudes" Type="Self.int_solicitudes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_tipo_solicitud">
+              <PropertyRef Name="tip_sol_id" />
+            </Principal>
+            <Dependent Role="int_solicitudes">
+              <PropertyRef Name="sol_tip_sol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_solicitudes_int_usuarios">
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="0..1" />
+          <End Role="int_solicitudes" Type="Self.int_solicitudes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="int_solicitudes">
+              <PropertyRef Name="sol_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_sucursales_int_empresas">
+          <End Role="int_empresas" Type="Self.int_empresas" Multiplicity="0..1" />
+          <End Role="int_sucursales" Type="Self.int_sucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_empresas">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="int_sucursales">
+              <PropertyRef Name="suc_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_usuarios_int_usu_categorias">
+          <End Role="int_usu_categorias" Type="Self.int_usu_categorias" Multiplicity="0..1" />
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usu_categorias">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="int_usuarios">
+              <PropertyRef Name="usu_cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_intranet_vydModelStoreContainer">
+          <EntitySet Name="int_com_historial" EntityType="Self.int_com_historial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_directorios" EntityType="Self.int_directorios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_empresas" EntityType="Self.int_empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_eve_comentarios" EntityType="Self.int_eve_comentarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_eve_detalle" EntityType="Self.int_eve_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_eventos" EntityType="Self.int_eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_responsables" EntityType="Self.int_responsables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_solicitudes" EntityType="Self.int_solicitudes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_sucursales" EntityType="Self.int_sucursales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_tipo_solicitud" EntityType="Self.int_tipo_solicitud" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_usu_categorias" EntityType="Self.int_usu_categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="int_usuarios" EntityType="Self.int_usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_int_com_historial_int_eve_comentarios" Association="Self.FK_int_com_historial_int_eve_comentarios">
+            <End Role="int_eve_comentarios" EntitySet="int_eve_comentarios" />
+            <End Role="int_com_historial" EntitySet="int_com_historial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_directorios_int_sucursales" Association="Self.FK_int_directorios_int_sucursales">
+            <End Role="int_sucursales" EntitySet="int_sucursales" />
+            <End Role="int_directorios" EntitySet="int_directorios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_directorios_int_usuarios" Association="Self.FK_int_directorios_int_usuarios">
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+            <End Role="int_directorios" EntitySet="int_directorios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_eve_comentarios_int_eventos" Association="Self.FK_int_eve_comentarios_int_eventos">
+            <End Role="int_eventos" EntitySet="int_eventos" />
+            <End Role="int_eve_comentarios" EntitySet="int_eve_comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_eve_comentarios_int_usuarios" Association="Self.FK_int_eve_comentarios_int_usuarios">
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+            <End Role="int_eve_comentarios" EntitySet="int_eve_comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_eve_detalle_int_eventos" Association="Self.FK_int_eve_detalle_int_eventos">
+            <End Role="int_eventos" EntitySet="int_eventos" />
+            <End Role="int_eve_detalle" EntitySet="int_eve_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_eventos_int_usuarios" Association="Self.FK_int_eventos_int_usuarios">
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+            <End Role="int_eventos" EntitySet="int_eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_responsables_int_tipo_solicitud" Association="Self.FK_int_responsables_int_tipo_solicitud">
+            <End Role="int_tipo_solicitud" EntitySet="int_tipo_solicitud" />
+            <End Role="int_responsables" EntitySet="int_responsables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_solicitudes_int_responsables" Association="Self.FK_int_solicitudes_int_responsables">
+            <End Role="int_responsables" EntitySet="int_responsables" />
+            <End Role="int_solicitudes" EntitySet="int_solicitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_solicitudes_int_tipo_solicitud" Association="Self.FK_int_solicitudes_int_tipo_solicitud">
+            <End Role="int_tipo_solicitud" EntitySet="int_tipo_solicitud" />
+            <End Role="int_solicitudes" EntitySet="int_solicitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_solicitudes_int_usuarios" Association="Self.FK_int_solicitudes_int_usuarios">
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+            <End Role="int_solicitudes" EntitySet="int_solicitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_sucursales_int_empresas" Association="Self.FK_int_sucursales_int_empresas">
+            <End Role="int_empresas" EntitySet="int_empresas" />
+            <End Role="int_sucursales" EntitySet="int_sucursales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_usuarios_int_usu_categorias" Association="Self.FK_int_usuarios_int_usu_categorias">
+            <End Role="int_usu_categorias" EntitySet="int_usu_categorias" />
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_intranet_vydModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="int_com_historial">
+          <Key>
+            <PropertyRef Name="com_his_id" />
+          </Key>
+          <Property Name="com_his_id" Type="Int32" Nullable="false" />
+          <Property Name="com_his_eve_com_id" Type="Int32" />
+          <Property Name="com_his_eve_com_cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="com_his_eve_com_feccre" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="int_eve_comentarios" Relationship="Self.FK_int_com_historial_int_eve_comentarios" FromRole="int_com_historial" ToRole="int_eve_comentarios" />
+        </EntityType>
+        <EntityType Name="int_directorios">
+          <Key>
+            <PropertyRef Name="dir_id" />
+          </Key>
+          <Property Name="dir_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dir_anexo" Type="Int32" />
+          <Property Name="dir_movil" Type="Int32" />
+          <Property Name="dir_usu_id" Type="Int32" />
+          <Property Name="dir_suc_id" Type="Int32" />
+          <Property Name="dir_feccre" Type="DateTime" Precision="3" />
+          <Property Name="dir_usucre" Type="Int32" />
+          <NavigationProperty Name="int_sucursales" Relationship="Self.FK_int_directorios_int_sucursales" FromRole="int_directorios" ToRole="int_sucursales" />
+          <NavigationProperty Name="int_usuarios" Relationship="Self.FK_int_directorios_int_usuarios" FromRole="int_directorios" ToRole="int_usuarios" />
+        </EntityType>
+        <EntityType Name="int_empresas">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emp_rut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emp_feccre" Type="DateTime" Precision="3" />
+          <Property Name="emp_usucre" Type="Int32" />
+          <NavigationProperty Name="int_sucursales" Relationship="Self.FK_int_sucursales_int_empresas" FromRole="int_empresas" ToRole="int_sucursales" />
+        </EntityType>
+        <EntityType Name="int_eve_comentarios">
+          <Key>
+            <PropertyRef Name="eve_com_id" />
+          </Key>
+          <Property Name="eve_com_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eve_com_cuerpo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="eve_com_usu_id" Type="Int32" />
+          <Property Name="eve_com_eve_id" Type="Int32" />
+          <Property Name="eve_com_feccre" Type="DateTime" Precision="3" />
+          <Property Name="eve_com_fecmod" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="int_com_historial" Relationship="Self.FK_int_com_historial_int_eve_comentarios" FromRole="int_eve_comentarios" ToRole="int_com_historial" />
+          <NavigationProperty Name="int_eventos" Relationship="Self.FK_int_eve_comentarios_int_eventos" FromRole="int_eve_comentarios" ToRole="int_eventos" />
+          <NavigationProperty Name="int_usuarios" Relationship="Self.FK_int_eve_comentarios_int_usuarios" FromRole="int_eve_comentarios" ToRole="int_usuarios" />
+        </EntityType>
+        <EntityType Name="int_eve_detalle">
+          <Key>
+            <PropertyRef Name="eve_det_id" />
+          </Key>
+          <Property Name="eve_det_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="eve_det_eve_id" Type="Int32" />
+          <Property Name="eve_det_imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="eve_det_feccre" Type="DateTime" Precision="3" />
+          <Property Name="eve_det_fecmod" Type="DateTime" Precision="3" />
+          <Property Name="eve_det_usucre" Type="Int32" />
+          <NavigationProperty Name="int_eventos" Relationship="Self.FK_int_eve_detalle_int_eventos" FromRole="int_eve_detalle" ToRole="int_eventos" />
+        </EntityType>
+        <EntityType Name="int_eventos">
+          <Key>
+            <PropertyRef Name="eve_id" />
+          </Key>
+          <Property Name="eve_id" Type="Int32" Nullable="false" />
+          <Property Name="eve_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eve_motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="eve_feccre" Type="DateTime" Precision="3" />
+          <Property Name="eve_fecmod" Type="DateTime" Precision="3" />
+          <Property Name="eve_usucre" Type="Int32" />
+          <Property Name="eve_fec_realizacion" Type="DateTime" Precision="3" />
+          <Property Name="eve_usu_id" Type="Int32" />
+          <NavigationProperty Name="int_eve_comentarios" Relationship="Self.FK_int_eve_comentarios_int_eventos" FromRole="int_eventos" ToRole="int_eve_comentarios" />
+          <NavigationProperty Name="int_eve_detalle" Relationship="Self.FK_int_eve_detalle_int_eventos" FromRole="int_eventos" ToRole="int_eve_detalle" />
+          <NavigationProperty Name="int_usuarios" Relationship="Self.FK_int_eventos_int_usuarios" FromRole="int_eventos" ToRole="int_usuarios" />
+        </EntityType>
+        <EntityType Name="int_responsables">
+          <Key>
+            <PropertyRef Name="res_id" />
+          </Key>
+          <Property Name="res_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="res_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="res_apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="res_correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="res_anexo" Type="Int32" />
+          <Property Name="res_tip_sol_id" Type="Int32" />
+          <NavigationProperty Name="int_tipo_solicitud" Relationship="Self.FK_int_responsables_int_tipo_solicitud" FromRole="int_responsables" ToRole="int_tipo_solicitud" />
+          <NavigationProperty Name="int_solicitudes" Relationship="Self.FK_int_solicitudes_int_responsables" FromRole="int_responsables" ToRole="int_solicitudes" />
+        </EntityType>
+        <EntityType Name="int_solicitudes">
+          <Key>
+            <PropertyRef Name="sol_id" />
+          </Key>
+          <Property Name="sol_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sol_titulo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sol_cuerpo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sol_feccre" Type="DateTime" Precision="3" />
+          <Property Name="sol_res_id" Type="Int32" />
+          <Property Name="sol_tip_sol_id" Type="Int32" />
+          <Property Name="sol_usu_id" Type="Int32" />
+          <NavigationProperty Name="int_responsables" Relationship="Self.FK_int_solicitudes_int_responsables" FromRole="int_solicitudes" ToRole="int_responsables" />
+          <NavigationProperty Name="int_tipo_solicitud" Relationship="Self.FK_int_solicitudes_int_tipo_solicitud" FromRole="int_solicitudes" ToRole="int_tipo_solicitud" />
+          <NavigationProperty Name="int_usuarios" Relationship="Self.FK_int_solicitudes_int_usuarios" FromRole="int_solicitudes" ToRole="int_usuarios" />
+        </EntityType>
+        <EntityType Name="int_sucursales">
+          <Key>
+            <PropertyRef Name="suc_id" />
+          </Key>
+          <Property Name="suc_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="suc_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="suc_direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="suc_telefono" Type="Int32" />
+          <Property Name="suc_feccre" Type="DateTime" Precision="3" />
+          <Property Name="suc_usucre" Type="Int32" />
+          <Property Name="suc_emp_id" Type="Int32" />
+          <NavigationProperty Name="int_directorios" Relationship="Self.FK_int_directorios_int_sucursales" FromRole="int_sucursales" ToRole="int_directorios" />
+          <NavigationProperty Name="int_empresas" Relationship="Self.FK_int_sucursales_int_empresas" FromRole="int_sucursales" ToRole="int_empresas" />
+        </EntityType>
+        <EntityType Name="int_tipo_solicitud">
+          <Key>
+            <PropertyRef Name="tip_sol_id" />
+          </Key>
+          <Property Name="tip_sol_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tip_sol_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="int_responsables" Relationship="Self.FK_int_responsables_int_tipo_solicitud" FromRole="int_tipo_solicitud" ToRole="int_responsables" />
+          <NavigationProperty Name="int_solicitudes" Relationship="Self.FK_int_solicitudes_int_tipo_solicitud" FromRole="int_tipo_solicitud" ToRole="int_solicitudes" />
+        </EntityType>
+        <EntityType Name="int_usu_categorias">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_nombre" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="int_usuarios" Relationship="Self.FK_int_usuarios_int_usu_categorias" FromRole="int_usu_categorias" ToRole="int_usuarios" />
+        </EntityType>
+        <EntityType Name="int_usuarios">
+          <Key>
+            <PropertyRef Name="usu_id" />
+          </Key>
+          <Property Name="usu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usu_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usu_apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usu_rut" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="usu_sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="usu_correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usu_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="usu_imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="usu_cumpleaños" Type="DateTime" Precision="0" />
+          <Property Name="usu_cat_id" Type="Int32" />
+          <Property Name="usu_feccre" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="int_directorios" Relationship="Self.FK_int_directorios_int_usuarios" FromRole="int_usuarios" ToRole="int_directorios" />
+          <NavigationProperty Name="int_eve_comentarios" Relationship="Self.FK_int_eve_comentarios_int_usuarios" FromRole="int_usuarios" ToRole="int_eve_comentarios" />
+          <NavigationProperty Name="int_eventos" Relationship="Self.FK_int_eventos_int_usuarios" FromRole="int_usuarios" ToRole="int_eventos" />
+          <NavigationProperty Name="int_solicitudes" Relationship="Self.FK_int_solicitudes_int_usuarios" FromRole="int_usuarios" ToRole="int_solicitudes" />
+          <NavigationProperty Name="int_usu_categorias" Relationship="Self.FK_int_usuarios_int_usu_categorias" FromRole="int_usuarios" ToRole="int_usu_categorias" />
+        </EntityType>
+        <Association Name="FK_int_com_historial_int_eve_comentarios">
+          <End Role="int_eve_comentarios" Type="Self.int_eve_comentarios" Multiplicity="0..1" />
+          <End Role="int_com_historial" Type="Self.int_com_historial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_eve_comentarios">
+              <PropertyRef Name="eve_com_id" />
+            </Principal>
+            <Dependent Role="int_com_historial">
+              <PropertyRef Name="com_his_eve_com_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_directorios_int_sucursales">
+          <End Role="int_sucursales" Type="Self.int_sucursales" Multiplicity="0..1" />
+          <End Role="int_directorios" Type="Self.int_directorios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_sucursales">
+              <PropertyRef Name="suc_id" />
+            </Principal>
+            <Dependent Role="int_directorios">
+              <PropertyRef Name="dir_suc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_directorios_int_usuarios">
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="0..1" />
+          <End Role="int_directorios" Type="Self.int_directorios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="int_directorios">
+              <PropertyRef Name="dir_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_sucursales_int_empresas">
+          <End Role="int_empresas" Type="Self.int_empresas" Multiplicity="0..1" />
+          <End Role="int_sucursales" Type="Self.int_sucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_empresas">
+              <PropertyRef Name="emp_id" />
+            </Principal>
+            <Dependent Role="int_sucursales">
+              <PropertyRef Name="suc_emp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_eve_comentarios_int_eventos">
+          <End Role="int_eventos" Type="Self.int_eventos" Multiplicity="0..1" />
+          <End Role="int_eve_comentarios" Type="Self.int_eve_comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_eventos">
+              <PropertyRef Name="eve_id" />
+            </Principal>
+            <Dependent Role="int_eve_comentarios">
+              <PropertyRef Name="eve_com_eve_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_eve_comentarios_int_usuarios">
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="0..1" />
+          <End Role="int_eve_comentarios" Type="Self.int_eve_comentarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="int_eve_comentarios">
+              <PropertyRef Name="eve_com_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_eve_detalle_int_eventos">
+          <End Role="int_eventos" Type="Self.int_eventos" Multiplicity="0..1" />
+          <End Role="int_eve_detalle" Type="Self.int_eve_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_eventos">
+              <PropertyRef Name="eve_id" />
+            </Principal>
+            <Dependent Role="int_eve_detalle">
+              <PropertyRef Name="eve_det_eve_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_eventos_int_usuarios">
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="0..1" />
+          <End Role="int_eventos" Type="Self.int_eventos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="int_eventos">
+              <PropertyRef Name="eve_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_responsables_int_tipo_solicitud">
+          <End Role="int_tipo_solicitud" Type="Self.int_tipo_solicitud" Multiplicity="0..1" />
+          <End Role="int_responsables" Type="Self.int_responsables" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_tipo_solicitud">
+              <PropertyRef Name="tip_sol_id" />
+            </Principal>
+            <Dependent Role="int_responsables">
+              <PropertyRef Name="res_tip_sol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_solicitudes_int_responsables">
+          <End Role="int_responsables" Type="Self.int_responsables" Multiplicity="0..1" />
+          <End Role="int_solicitudes" Type="Self.int_solicitudes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_responsables">
+              <PropertyRef Name="res_id" />
+            </Principal>
+            <Dependent Role="int_solicitudes">
+              <PropertyRef Name="sol_res_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_solicitudes_int_tipo_solicitud">
+          <End Role="int_tipo_solicitud" Type="Self.int_tipo_solicitud" Multiplicity="0..1" />
+          <End Role="int_solicitudes" Type="Self.int_solicitudes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_tipo_solicitud">
+              <PropertyRef Name="tip_sol_id" />
+            </Principal>
+            <Dependent Role="int_solicitudes">
+              <PropertyRef Name="sol_tip_sol_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_solicitudes_int_usuarios">
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="0..1" />
+          <End Role="int_solicitudes" Type="Self.int_solicitudes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usuarios">
+              <PropertyRef Name="usu_id" />
+            </Principal>
+            <Dependent Role="int_solicitudes">
+              <PropertyRef Name="sol_usu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_int_usuarios_int_usu_categorias">
+          <End Role="int_usu_categorias" Type="Self.int_usu_categorias" Multiplicity="0..1" />
+          <End Role="int_usuarios" Type="Self.int_usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="int_usu_categorias">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="int_usuarios">
+              <PropertyRef Name="usu_cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_intranet_vydEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="int_com_historial" EntityType="Self.int_com_historial" />
+          <EntitySet Name="int_directorios" EntityType="Self.int_directorios" />
+          <EntitySet Name="int_empresas" EntityType="Self.int_empresas" />
+          <EntitySet Name="int_eve_comentarios" EntityType="Self.int_eve_comentarios" />
+          <EntitySet Name="int_eve_detalle" EntityType="Self.int_eve_detalle" />
+          <EntitySet Name="int_eventos" EntityType="Self.int_eventos" />
+          <EntitySet Name="int_responsables" EntityType="Self.int_responsables" />
+          <EntitySet Name="int_solicitudes" EntityType="Self.int_solicitudes" />
+          <EntitySet Name="int_sucursales" EntityType="Self.int_sucursales" />
+          <EntitySet Name="int_tipo_solicitud" EntityType="Self.int_tipo_solicitud" />
+          <EntitySet Name="int_usu_categorias" EntityType="Self.int_usu_categorias" />
+          <EntitySet Name="int_usuarios" EntityType="Self.int_usuarios" />
+          <AssociationSet Name="FK_int_com_historial_int_eve_comentarios" Association="Self.FK_int_com_historial_int_eve_comentarios">
+            <End Role="int_eve_comentarios" EntitySet="int_eve_comentarios" />
+            <End Role="int_com_historial" EntitySet="int_com_historial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_directorios_int_sucursales" Association="Self.FK_int_directorios_int_sucursales">
+            <End Role="int_sucursales" EntitySet="int_sucursales" />
+            <End Role="int_directorios" EntitySet="int_directorios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_directorios_int_usuarios" Association="Self.FK_int_directorios_int_usuarios">
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+            <End Role="int_directorios" EntitySet="int_directorios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_sucursales_int_empresas" Association="Self.FK_int_sucursales_int_empresas">
+            <End Role="int_empresas" EntitySet="int_empresas" />
+            <End Role="int_sucursales" EntitySet="int_sucursales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_eve_comentarios_int_eventos" Association="Self.FK_int_eve_comentarios_int_eventos">
+            <End Role="int_eventos" EntitySet="int_eventos" />
+            <End Role="int_eve_comentarios" EntitySet="int_eve_comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_eve_comentarios_int_usuarios" Association="Self.FK_int_eve_comentarios_int_usuarios">
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+            <End Role="int_eve_comentarios" EntitySet="int_eve_comentarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_eve_detalle_int_eventos" Association="Self.FK_int_eve_detalle_int_eventos">
+            <End Role="int_eventos" EntitySet="int_eventos" />
+            <End Role="int_eve_detalle" EntitySet="int_eve_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_eventos_int_usuarios" Association="Self.FK_int_eventos_int_usuarios">
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+            <End Role="int_eventos" EntitySet="int_eventos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_responsables_int_tipo_solicitud" Association="Self.FK_int_responsables_int_tipo_solicitud">
+            <End Role="int_tipo_solicitud" EntitySet="int_tipo_solicitud" />
+            <End Role="int_responsables" EntitySet="int_responsables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_solicitudes_int_responsables" Association="Self.FK_int_solicitudes_int_responsables">
+            <End Role="int_responsables" EntitySet="int_responsables" />
+            <End Role="int_solicitudes" EntitySet="int_solicitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_solicitudes_int_tipo_solicitud" Association="Self.FK_int_solicitudes_int_tipo_solicitud">
+            <End Role="int_tipo_solicitud" EntitySet="int_tipo_solicitud" />
+            <End Role="int_solicitudes" EntitySet="int_solicitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_solicitudes_int_usuarios" Association="Self.FK_int_solicitudes_int_usuarios">
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+            <End Role="int_solicitudes" EntitySet="int_solicitudes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_int_usuarios_int_usu_categorias" Association="Self.FK_int_usuarios_int_usu_categorias">
+            <End Role="int_usu_categorias" EntitySet="int_usu_categorias" />
+            <End Role="int_usuarios" EntitySet="int_usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_intranet_vydModelStoreContainer" CdmEntityContainer="db_intranet_vydEntities">
+          <EntitySetMapping Name="int_com_historial">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_com_historial">
+              <MappingFragment StoreEntitySet="int_com_historial">
+                <ScalarProperty Name="com_his_id" ColumnName="com_his_id" />
+                <ScalarProperty Name="com_his_eve_com_id" ColumnName="com_his_eve_com_id" />
+                <ScalarProperty Name="com_his_eve_com_cuerpo" ColumnName="com_his_eve_com_cuerpo" />
+                <ScalarProperty Name="com_his_eve_com_feccre" ColumnName="com_his_eve_com_feccre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_directorios">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_directorios">
+              <MappingFragment StoreEntitySet="int_directorios">
+                <ScalarProperty Name="dir_id" ColumnName="dir_id" />
+                <ScalarProperty Name="dir_anexo" ColumnName="dir_anexo" />
+                <ScalarProperty Name="dir_movil" ColumnName="dir_movil" />
+                <ScalarProperty Name="dir_usu_id" ColumnName="dir_usu_id" />
+                <ScalarProperty Name="dir_suc_id" ColumnName="dir_suc_id" />
+                <ScalarProperty Name="dir_feccre" ColumnName="dir_feccre" />
+                <ScalarProperty Name="dir_usucre" ColumnName="dir_usucre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_empresas">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_empresas">
+              <MappingFragment StoreEntitySet="int_empresas">
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_nombre" ColumnName="emp_nombre" />
+                <ScalarProperty Name="emp_rut" ColumnName="emp_rut" />
+                <ScalarProperty Name="emp_feccre" ColumnName="emp_feccre" />
+                <ScalarProperty Name="emp_usucre" ColumnName="emp_usucre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_eve_comentarios">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_eve_comentarios">
+              <MappingFragment StoreEntitySet="int_eve_comentarios">
+                <ScalarProperty Name="eve_com_id" ColumnName="eve_com_id" />
+                <ScalarProperty Name="eve_com_cuerpo" ColumnName="eve_com_cuerpo" />
+                <ScalarProperty Name="eve_com_usu_id" ColumnName="eve_com_usu_id" />
+                <ScalarProperty Name="eve_com_eve_id" ColumnName="eve_com_eve_id" />
+                <ScalarProperty Name="eve_com_feccre" ColumnName="eve_com_feccre" />
+                <ScalarProperty Name="eve_com_fecmod" ColumnName="eve_com_fecmod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_eve_detalle">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_eve_detalle">
+              <MappingFragment StoreEntitySet="int_eve_detalle">
+                <ScalarProperty Name="eve_det_id" ColumnName="eve_det_id" />
+                <ScalarProperty Name="eve_det_eve_id" ColumnName="eve_det_eve_id" />
+                <ScalarProperty Name="eve_det_imagen" ColumnName="eve_det_imagen" />
+                <ScalarProperty Name="eve_det_feccre" ColumnName="eve_det_feccre" />
+                <ScalarProperty Name="eve_det_fecmod" ColumnName="eve_det_fecmod" />
+                <ScalarProperty Name="eve_det_usucre" ColumnName="eve_det_usucre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_eventos">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_eventos">
+              <MappingFragment StoreEntitySet="int_eventos">
+                <ScalarProperty Name="eve_id" ColumnName="eve_id" />
+                <ScalarProperty Name="eve_nombre" ColumnName="eve_nombre" />
+                <ScalarProperty Name="eve_motivo" ColumnName="eve_motivo" />
+                <ScalarProperty Name="eve_feccre" ColumnName="eve_feccre" />
+                <ScalarProperty Name="eve_fecmod" ColumnName="eve_fecmod" />
+                <ScalarProperty Name="eve_usucre" ColumnName="eve_usucre" />
+                <ScalarProperty Name="eve_fec_realizacion" ColumnName="eve_fec_realizacion" />
+                <ScalarProperty Name="eve_usu_id" ColumnName="eve_usu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_responsables">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_responsables">
+              <MappingFragment StoreEntitySet="int_responsables">
+                <ScalarProperty Name="res_id" ColumnName="res_id" />
+                <ScalarProperty Name="res_nombre" ColumnName="res_nombre" />
+                <ScalarProperty Name="res_apellido" ColumnName="res_apellido" />
+                <ScalarProperty Name="res_correo" ColumnName="res_correo" />
+                <ScalarProperty Name="res_anexo" ColumnName="res_anexo" />
+                <ScalarProperty Name="res_tip_sol_id" ColumnName="res_tip_sol_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_solicitudes">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_solicitudes">
+              <MappingFragment StoreEntitySet="int_solicitudes">
+                <ScalarProperty Name="sol_id" ColumnName="sol_id" />
+                <ScalarProperty Name="sol_titulo" ColumnName="sol_titulo" />
+                <ScalarProperty Name="sol_cuerpo" ColumnName="sol_cuerpo" />
+                <ScalarProperty Name="sol_feccre" ColumnName="sol_feccre" />
+                <ScalarProperty Name="sol_res_id" ColumnName="sol_res_id" />
+                <ScalarProperty Name="sol_tip_sol_id" ColumnName="sol_tip_sol_id" />
+                <ScalarProperty Name="sol_usu_id" ColumnName="sol_usu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_sucursales">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_sucursales">
+              <MappingFragment StoreEntitySet="int_sucursales">
+                <ScalarProperty Name="suc_id" ColumnName="suc_id" />
+                <ScalarProperty Name="suc_nombre" ColumnName="suc_nombre" />
+                <ScalarProperty Name="suc_direccion" ColumnName="suc_direccion" />
+                <ScalarProperty Name="suc_telefono" ColumnName="suc_telefono" />
+                <ScalarProperty Name="suc_feccre" ColumnName="suc_feccre" />
+                <ScalarProperty Name="suc_usucre" ColumnName="suc_usucre" />
+                <ScalarProperty Name="suc_emp_id" ColumnName="suc_emp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_tipo_solicitud">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_tipo_solicitud">
+              <MappingFragment StoreEntitySet="int_tipo_solicitud">
+                <ScalarProperty Name="tip_sol_id" ColumnName="tip_sol_id" />
+                <ScalarProperty Name="tip_sol_nombre" ColumnName="tip_sol_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_usu_categorias">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_usu_categorias">
+              <MappingFragment StoreEntitySet="int_usu_categorias">
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="cat_nombre" ColumnName="cat_nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="int_usuarios">
+            <EntityTypeMapping TypeName="db_intranet_vydModel.int_usuarios">
+              <MappingFragment StoreEntitySet="int_usuarios">
+                <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+                <ScalarProperty Name="usu_nombre" ColumnName="usu_nombre" />
+                <ScalarProperty Name="usu_apellido" ColumnName="usu_apellido" />
+                <ScalarProperty Name="usu_rut" ColumnName="usu_rut" />
+                <ScalarProperty Name="usu_sexo" ColumnName="usu_sexo" />
+                <ScalarProperty Name="usu_correo" ColumnName="usu_correo" />
+                <ScalarProperty Name="usu_password" ColumnName="usu_password" />
+                <ScalarProperty Name="usu_imagen" ColumnName="usu_imagen" />
+                <ScalarProperty Name="usu_cumpleaños" ColumnName="usu_cumpleaños" />
+                <ScalarProperty Name="usu_cat_id" ColumnName="usu_cat_id" />
+                <ScalarProperty Name="usu_feccre" ColumnName="usu_feccre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
